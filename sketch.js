@@ -16,6 +16,7 @@ var gameState=0;
 
 function preload(){
  bgimg=loadImage("Bg.png");
+ bgimg2=loadImage("starter.jpg");
 }
 
 function setup() {
@@ -51,9 +52,17 @@ function setup() {
 function draw() {
 
   background(bgimg);
-
   if (gameState===0){
-      background("Yellow"); 
+      background(bgimg2);
+      textSize(30);
+      fill("red");
+      text("Press 'space' to continue...",830,480);
+      if(keyCode===32){
+         gameState=1;
+       }
+  }
+  if (gameState===1){
+      background("yellow");
       textSize(30);
       fill("red");
       text("*Instructions*",500,50);
@@ -67,12 +76,12 @@ function draw() {
       text("Enjoy playing :)",200,420);
       text("Press 's' to play",200,460);
       if(keyCode===115){
-         gameState=1;
+         gameState=2;
         
       }
   }
 
-  if (gameState===1){
+  if (gameState===2){
 
       noStroke();
       textSize(30);
@@ -110,12 +119,12 @@ function draw() {
       detectCollision(ball,bottle7);
   
       if (count>=11){
-          gameState=2;
+          gameState=3;
   
       }
   }
 
-      if(gameState===2){
+      if(gameState===3){
          if(score>=50){
             background("Yellow");
             textSize(150);
